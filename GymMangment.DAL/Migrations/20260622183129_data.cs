@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GymMangment.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class tabel : Migration
+    public partial class data : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,8 +20,8 @@ namespace GymMangment.DAL.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "varchar(30)", maxLength: 30, nullable: false),
-                    createdAt = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,8 +35,8 @@ namespace GymMangment.DAL.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JionDate = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false),
+                    JionDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Name = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     Email = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
                     phonenumber = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -64,8 +64,8 @@ namespace GymMangment.DAL.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DurationOnDays = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    createdAt = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()")
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()")
                 },
                 constraints: table =>
                 {
@@ -80,8 +80,8 @@ namespace GymMangment.DAL.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     specialty = table.Column<int>(type: "int", nullable: true),
-                    HireDAte = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    HireDAte = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,8 +99,8 @@ namespace GymMangment.DAL.Migrations
                     bloodType = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Note = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MemberId = table.Column<int>(type: "int", nullable: false),
-                    createdAt = table.Column<TimeOnly>(type: "time", nullable: false),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -122,8 +122,8 @@ namespace GymMangment.DAL.Migrations
                     MemberId = table.Column<int>(type: "int", nullable: false),
                     PlanId = table.Column<int>(type: "int", nullable: false),
                     EndtDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    startedDate = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    startedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -154,8 +154,8 @@ namespace GymMangment.DAL.Migrations
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TrainerId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
-                    createdAt = table.Column<TimeOnly>(type: "time", nullable: false),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    createdAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,8 +183,8 @@ namespace GymMangment.DAL.Migrations
                     MemberId = table.Column<int>(type: "int", nullable: false),
                     SessionId = table.Column<int>(type: "int", nullable: false),
                     IsAttended = table.Column<bool>(type: "bit", nullable: false),
-                    BookingDate = table.Column<TimeOnly>(type: "time", nullable: false, defaultValueSql: "GETDATE()"),
-                    updatedAt = table.Column<TimeOnly>(type: "time", nullable: false)
+                    BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    updatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -208,11 +208,11 @@ namespace GymMangment.DAL.Migrations
                 columns: new[] { "ID", "Name", "updatedAt" },
                 values: new object[,]
                 {
-                    { 1, "Cadio", new TimeOnly(0, 0, 0) },
-                    { 2, "strength", new TimeOnly(0, 0, 0) },
-                    { 3, "Yoga", new TimeOnly(0, 0, 0) },
-                    { 4, "Boxing", new TimeOnly(0, 0, 0) },
-                    { 5, "CrossFit", new TimeOnly(0, 0, 0) }
+                    { 1, "Cadio", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 2, "strength", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 3, "Yoga", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 4, "Boxing", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) },
+                    { 5, "CrossFit", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) }
                 });
 
             migrationBuilder.CreateIndex(

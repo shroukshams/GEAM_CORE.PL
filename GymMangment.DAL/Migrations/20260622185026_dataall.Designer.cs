@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymMangment.DAL.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    [Migration("20260622152854_update")]
-    partial class update
+    [Migration("20260622185026_dataall")]
+    partial class dataall
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -205,7 +205,7 @@ namespace GymMangment.DAL.Migrations
                         {
                             t.HasCheckConstraint("EmailCheck", "Email LIKE '_%@_%._%'");
 
-                            t.HasCheckConstraint("phoneNumberCheck", "phonenumber LIKE '010% OR 011% OR 012% OR 015%'");
+                            t.HasCheckConstraint("phoneNumberCheck", "phonenumber LIKE '010%' OR phonenumber LIKE '011%' OR phonenumber LIKE '012%' OR phonenumber LIKE '015%'");
                         });
                 });
 

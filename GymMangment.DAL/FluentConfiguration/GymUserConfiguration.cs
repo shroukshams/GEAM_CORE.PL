@@ -20,11 +20,16 @@ namespace GymMangement.DAL.FluentConfiguration
                 ;
             builder.HasIndex(X => X.Email).IsUnique();
             builder.HasIndex(X => X.phonenumber).IsUnique();
-            
-            builder.ToTable( tb =>
+
+            builder.ToTable(tb =>
             {
                 tb.HasCheckConstraint("EmailCheck", "Email LIKE '_%@_%._%'");
-                tb.HasCheckConstraint("phoneNumberCheck", "phonenumber LIKE '010% OR 011% OR 012% OR 015%'");
+
+                tb.HasCheckConstraint("phoneNumberCheck",
+                    "phonenumber LIKE '010%' OR " +
+                    "phonenumber LIKE '011%' OR " +
+                    "phonenumber LIKE '012%' OR " +
+                    "phonenumber LIKE '015%'");
             });
             builder.OwnsOne(X => X.Address, a =>
             {

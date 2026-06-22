@@ -1,3 +1,5 @@
+using GymMangment.BLL.Classes;
+using GymMangment.BLL.Services.Interfaces;
 using GymMangment.DAL.Context;
 using GymMangment.DAL.Repositories.Classes;
 using GymMangment.DAL.Repositories.Interface;
@@ -12,8 +14,10 @@ namespace GEAM_CORE.PL
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-           builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+           //builder.Services.AddScoped<IPlanRepository, PlanRepository>();
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddDbContext<GymDbContext>(Options => { Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); });
+            builder.Services.AddScoped<IMemberService, MemberService>();
 
             var app = builder.Build();
 

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymMangment.DAL.Migrations
 {
     [DbContext(typeof(GymDbContext))]
-    [Migration("20260622150545_tabel")]
-    partial class tabel
+    [Migration("20260622183129_data")]
+    partial class data
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,14 +36,14 @@ namespace GymMangment.DAL.Migrations
                     b.Property<bool>("IsAttended")
                         .HasColumnType("bit");
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasColumnName("BookingDate")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("MemberId", "SessionId");
 
@@ -65,13 +65,13 @@ namespace GymMangment.DAL.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("varchar");
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -82,36 +82,36 @@ namespace GymMangment.DAL.Migrations
                         {
                             ID = 1,
                             Name = "Cadio",
-                            createdAt = new TimeOnly(0, 0, 0),
-                            updatedAt = new TimeOnly(0, 0, 0)
+                            createdAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            updatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = 2,
                             Name = "strength",
-                            createdAt = new TimeOnly(0, 0, 0),
-                            updatedAt = new TimeOnly(0, 0, 0)
+                            createdAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            updatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = 3,
                             Name = "Yoga",
-                            createdAt = new TimeOnly(0, 0, 0),
-                            updatedAt = new TimeOnly(0, 0, 0)
+                            createdAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            updatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = 4,
                             Name = "Boxing",
-                            createdAt = new TimeOnly(0, 0, 0),
-                            updatedAt = new TimeOnly(0, 0, 0)
+                            createdAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            updatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ID = 5,
                             Name = "CrossFit",
-                            createdAt = new TimeOnly(0, 0, 0),
-                            updatedAt = new TimeOnly(0, 0, 0)
+                            createdAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            updatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -133,14 +133,14 @@ namespace GymMangment.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeOnly>("createdAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("heigh")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal>("weight")
                         .HasColumnType("decimal(18,2)");
@@ -174,9 +174,9 @@ namespace GymMangment.DAL.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasColumnName("JionDate")
                         .HasDefaultValueSql("GETDATE()");
 
@@ -190,8 +190,8 @@ namespace GymMangment.DAL.Migrations
                     b.Property<string>("photo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -226,14 +226,14 @@ namespace GymMangment.DAL.Migrations
                     b.Property<int>("PlanId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasColumnName("startedDate")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -271,14 +271,14 @@ namespace GymMangment.DAL.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
-                    b.Property<TimeOnly>("updatedAt")
+                    b.Property<DateTime>("updatedAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasDefaultValueSql("GETDATE()");
 
                     b.HasKey("ID");
@@ -316,11 +316,11 @@ namespace GymMangment.DAL.Migrations
                     b.Property<int>("TrainerId")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("createdAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("datetime2");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 
@@ -344,17 +344,17 @@ namespace GymMangment.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<TimeOnly>("createdAt")
+                    b.Property<DateTime>("createdAt")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("time")
+                        .HasColumnType("datetime2")
                         .HasColumnName("HireDAte")
                         .HasDefaultValueSql("GETDATE()");
 
                     b.Property<int?>("specialty")
                         .HasColumnType("int");
 
-                    b.Property<TimeOnly>("updatedAt")
-                        .HasColumnType("time");
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("ID");
 

@@ -202,7 +202,7 @@ namespace GymMangment.DAL.Migrations
                         {
                             t.HasCheckConstraint("EmailCheck", "Email LIKE '_%@_%._%'");
 
-                            t.HasCheckConstraint("phoneNumberCheck", "phonenumber LIKE '010% OR 011% OR 012% OR 015%'");
+                            t.HasCheckConstraint("phoneNumberCheck", "phonenumber LIKE '010%' OR phonenumber LIKE '011%' OR phonenumber LIKE '012%' OR phonenumber LIKE '015%'");
                         });
                 });
 

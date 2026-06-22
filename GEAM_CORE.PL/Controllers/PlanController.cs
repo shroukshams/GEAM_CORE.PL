@@ -1,4 +1,5 @@
 ﻿using GymMangement.DAL.Models;
+using GymMangment.DAL.Models;
 using GymMangment.DAL.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
     public class PlanController : Controller
     {
         // private readonly GymDbContexts context;
-        private readonly IPlanRepository planRepository;
-        public PlanController(IPlanRepository planRepository)
+        private readonly IGenericRepository<Plan> planRepository;
+        public PlanController(IGenericRepository<Plan> planRepository)
         {
             this.planRepository = planRepository;
         }
