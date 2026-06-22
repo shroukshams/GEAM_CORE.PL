@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GEAM_CORE.PL/GEAM_CORE.PL.csproj" />
+  <Project Path="GymMangment.BLL/GymMangment.BLL.csproj" />
+  <Project Path="GymMangment.DAL/GymMangment.DAL.csproj" />
+</Solution>
