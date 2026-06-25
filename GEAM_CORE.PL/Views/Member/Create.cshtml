@@ -1,11 +1,12 @@
-﻿@model CreateMemberViewModel
+﻿@using GymMangement.DAL.Models.Enums
+@model CreateMemberViewModel
 <div class="container">
     <main role="main" class="pb-3">
 
         <header class="mb-4">
             <h3 class="text-primary-color">Add Member</h3>
         </header>
-        <form method="post">
+        <form asp-controller="Member"asp-action="CreatMember"method="post">
 
             <!-- Step navigation -->
             <ul class="nav nav-tabs mb-4" id="addMemberTabs" role="tablist">
@@ -33,27 +34,26 @@
                     </div>
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Name</label>
-                            <input name="Name" type="text" class="form-control" />
+                            <label asp-for =" Name"></label>
+                            <input asp-for="Name" type="text" class="form-control" />
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Email</label>
-                            <input name="Email" type="text" class="form-control" />
+                            <label asp-for="Email"> </label >
+                                <input asp-for ="Email" type="text" class="form-control" />
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Phone</label>
-                            <input name="Phone" type="text" class="form-control" />
+                                <label asp-for="Phone"></label> </ label >
+                                    <input name=asp-for ="Phone" type="text" class="form-control" />
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">DateOfBirth</label>
-                            <input name="DateOfBirth" class="form-control" type="date" />
+                          <label asp-for="DateOfBirth"> </ label >
+                          <input name=asp-for ="DateOfBirth" class="form-control" type="date" />
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Gender</label>
-                            <select name="Gender" class="form-select">
+                               <label asp-for="Gender" </ label >
+                            <select name="Gender" class="form-select" asp-items="Html.GetEnumSelectList<Gender>()">
                                 <option value="">-- Select Gender --</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                              
                             </select>
                         </div>
                     </div>
@@ -64,17 +64,17 @@
                     <div class="row g-3">
 
                         <div class="col-12 col-md-6">
-                            <label class="form-label">BuildingNumber</label>
-                            <input name="BuildingNumber" class="form-control" />
+                            <label asp-for=" BuildingNumber"></label>
+                                <input asp-for="BuildingNumber" class="form-control" />
                         </div>
 
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Street</label>
-                            <input name="Street" class="form-control" />
+                            <label asp-for=" Street"></label>
+                                <input asp-for="Street" class="form-control" />
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">City</label>
-                            <input name="City" class="form-control" />
+                                <label asp-for="City" ></label>
+                                <input asp-for="City" class="form-control" />
                         </div>
                     </div>
                 </div>
@@ -83,13 +83,13 @@
                 <div class="tab-pane fade" id="health-info" role="tabpanel" aria-labelledby="health-tab">
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Height</label>
-                            <input name="Height" class="form-control" />
+                                <label asp-for="Height"></label>
+                            <input asp-for="Height" class="form-control" />
                         </div>
 
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Weight</label>
-                            <input name="Weight" class="form-control" />
+                            <label asp-for= "Weight"></label>
+                            <input asp-for ="Weight" class="form-control" />
                         </div>
 
                         <div class="col-12 col-md-6">

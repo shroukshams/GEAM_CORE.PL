@@ -1,4 +1,5 @@
-﻿using GymMangment.DAL.Context;
+﻿
+using GymMangment.DAL.Context;
 using GymMangment.DAL.Models;
 using GymMangment.DAL.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -62,4 +63,3 @@ namespace GymMangment.DAL.Repositories.Classes
         }
     }
 }
-
