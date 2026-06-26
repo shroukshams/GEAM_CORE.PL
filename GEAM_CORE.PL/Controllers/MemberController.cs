@@ -32,6 +32,12 @@ namespace GEAM_CORE.PL.Controllers
 
             if (!ModelState.IsValid)return View(nameof(Create),model);
             var result=await _memberService.CreateMemberAsync(model, ct);
+
+            if (result)
+                TempData["SuccessMessage"] = "MemberCreated Succesfuly";
+            else
+                TempData["ErrorMessage"] = "MemberCreated is failed";
+
             return Redirect(nameof(Index));
         }
     }
