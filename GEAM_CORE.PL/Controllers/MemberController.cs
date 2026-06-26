@@ -1,4 +1,5 @@
 ﻿using GymMangment.BLL.Services.Interfaces;
+using GymMangment.BLL.ViewModels.MemberViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GEAM_CORE.PL.Controllers
@@ -25,7 +26,17 @@ namespace GEAM_CORE.PL.Controllers
         #region Create Member
         public IActionResult Create()
             => View();
+        [HttpPost]
+        public async Task<IActionResult>CreateMember(CreateMemberViewModel model, CancellationToken ct)
+        {
 
+            if (!ModelState.IsValid)return View(nameof(Create),model);
+            var result=await _memberService.CreateMemberAsync(model, ct);
+            return Redirect(nameof(Index));
+        }
+    }
+            
+          
         #endregion
 
         #region Edit Member
@@ -35,4 +46,4 @@ namespace GEAM_CORE.PL.Controllers
         #endregion
    
     }
-}
+

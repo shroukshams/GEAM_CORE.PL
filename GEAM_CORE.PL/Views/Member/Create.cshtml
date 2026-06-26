@@ -6,7 +6,7 @@
         <header class="mb-4">
             <h3 class="text-primary-color">Add Member</h3>
         </header>
-        <form asp-controller="Member"asp-action="CreatMember"method="post">
+        <form asp-controller="Member"asp-action="CreateMember"method="post">
 
             <!-- Step navigation -->
             <ul class="nav nav-tabs mb-4" id="addMemberTabs" role="tablist">
@@ -46,11 +46,11 @@
                                     <input name=asp-for ="Phone" type="text" class="form-control" />
                         </div>
                         <div class="col-12 col-md-6">
-                          <label asp-for="DateOfBirth"> </ label >
+                          <label asp-for="DateOfBirth"></label >
                           <input name=asp-for ="DateOfBirth" class="form-control" type="date" />
                         </div>
                         <div class="col-12 col-md-6">
-                               <label asp-for="Gender" </ label >
+                               <label asp-for="Gender"> </label >
                             <select name="Gender" class="form-select" asp-items="Html.GetEnumSelectList<Gender>()">
                                 <option value="">-- Select Gender --</option>
                               
@@ -83,18 +83,18 @@
                 <div class="tab-pane fade" id="health-info" role="tabpanel" aria-labelledby="health-tab">
                     <div class="row g-3">
                         <div class="col-12 col-md-6">
-                                <label asp-for="Height"></label>
-                            <input asp-for="Height" class="form-control" />
+                                <label asp-for="HealthRecordViewModel.Height"></label>
+                            <input asp-for="HealthRecordViewModel.Height" class="form-control" />
                         </div>
 
                         <div class="col-12 col-md-6">
-                            <label asp-for= "Weight"></label>
-                            <input asp-for ="Weight" class="form-control" />
+                            <label asp-for= "HealthRecordViewModel.Weight"></label>
+                            <input asp-for ="HealthRecordViewModel.Weight" class="form-control" />
                         </div>
 
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Blood Type</label>
-                            <select name="BloodType" class="form-select">
+                            <label asp-for="HealthRecordViewModel.BloodType"></label>
+                            <select asp-for ="HealthRecordViewModel.BloodType" class="form-select">
                                 <option value="">Select</option>
                                 <option>A+</option>
                                 <option>A-</option>
@@ -107,8 +107,8 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-6">
-                            <label class="form-label">Note</label>
-                            <input name="Note" class="form-control" />
+                            <label asp-for="HealthRecordViewModel.Note" ></label >
+                            <input asp-for="HealthRecordViewModel.BloodType" class="form-control" />
                         </div>
                     </div>
                 </div>
