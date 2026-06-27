@@ -1,15 +1,24 @@
-﻿using GymMangment.DAL.Models;
+﻿using GymManagement.DAL.Models;
+using GymMangment.DAL.Models;
+using GymMangment.DAL.Repositories.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace GymMangment.DAL.Repositories.Interface
+namespace GymManagement.DAL.Repositories.Interfaces
 {
     public interface IUnitOfWork
-
     {
-        IGenericRepository<IEntity> GetRepository<IEntity>() where IEntity : BaseEntity, new();
+        //get repo
+
+        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity, new();
+
+        // save changes
         Task<int> SaveChangesAsync(CancellationToken ct = default);
+
+        // sessions
         public ISessionRepository SessionRepository { get; }
     }
 }

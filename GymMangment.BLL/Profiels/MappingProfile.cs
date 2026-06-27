@@ -1,30 +1,63 @@
 ﻿using AutoMapper;
+using GymManagmemnt.BLL.ViewModels.SessionViewModel;
+using GymManagment.BLL.ViewModels.SessionViewModel;
+using GymMangment.BLL.ViewModels;
 using GymMangment.BLL.ViewModels.MemberViewModels;
 using GymMangment.DAL.Models;
 using Microsoft.IdentityModel.Tokens;
+using System.Net;
 
 namespace GymMangment.BLL.Profiles
 {
-    public class MappingProfile : Profile   // <-- لازم يرث من Profile
+    public class MappingProfile : Profile
     {
-        public MappingProfile()             // <-- Constructor
+        public MappingProfile()
         {
-            CreateMap<Member, MemberViewModel>();
-         
-            
-            
-            
-            //  .ForMember(dest => dest.Adress, opt => opt.MapFrom(src=>$"{Src."));
-
-
-
-            private void SessionProfiles()
+            //MemberProfiles();
+            SessionProfiles();
+        }
+        /*
+        private void MemberProfiles()
         {
-            CreateMap<CreateMemberViewModel, Session>();
+            CreateMap<Member, MemberViewModel>()
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => $"{src.Address.BuildingNumber} - {src.Address.Street} - {src.Address.City}"))
+                .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.DateOfBirth.ToShortDateString()));
 
 
+            CreateMap<HealthRecord, HealthRecordViewModel>().ReverseMap();
 
+            CreateMap<Member, MemberToUpdateViewModel>()
+                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City))
+                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
+                .ForMember(dest => dest.BuildingNumber, opt => opt.MapFrom(src => src.Address.BuildingNumber));
+
+            CreateMap<MemberToUpdateViewModel, Member>()
+                .ForMember(dest => dest.Phone, opt => opt.Ignore())
+                .ForMember(dest => dest.Name, opt => opt.Ignore())
+                .AfterMap((src, dest) =>
+                {
+                    dest.Address.BuildingNumber = src.BuildingNumber;
+                    dest.Address.City = src.City;
+                    dest.Address.Street = src.Street;
+                });
+
+            CreateMap<CreateMemberViewModel, Member>()
+                .ForMember(dest => dest.Address, opt => opt.MapFrom(src => new Address()
+                {
+                    BuildingNumber = src.BuildingNumber,
+                    City = src.City,
+                    Street = src.Street,
+                }))
+                .ForMember(dest => dest.HealthRecord, opt => opt.MapFrom(src => src.HealthRecordViewModel))
+                ;
+        }*/
+
+        private void SessionProfiles()
+        {
+            CreateMap<CreateSessionViewModel, Session>();
+             CreateMap<Category, CategorySelectViewModel>();
+             CreateMap<Trainer, TrainerSelectViewModel>();
         }
-               
-        }
+
     }
+}

@@ -18,6 +18,7 @@ namespace GymMangment.DAL.Repositories.Interface
         //  Delete IEntity
         Task<int> DeleteAsync(IEntity entity, CancellationToken ct = default);
         Task <bool>AnyAsync(Expression<Func<IEntity,bool>>predicate,CancellationToken ct = default);
+       //void AnyAsync(Session session);
     }
 }
 

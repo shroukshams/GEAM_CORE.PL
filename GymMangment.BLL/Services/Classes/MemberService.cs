@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GymManagement.DAL.Repositories.Interfaces;
 using GymMangment.BLL.Services.Interfaces;
 using GymMangment.BLL.ViewModels;
 using GymMangment.BLL.ViewModels.MemberViewModels;

@@ -1,3 +1,6 @@
+using GymManagement.BLL.Services.Interfaces;
+using GymManagement.DAL.Repositories.Classes;
+using GymManagement.DAL.Repositories.Interfaces;
 using GymMangment.BLL.Profiles;
 using GymMangment.BLL.Profiles;
 using GymMangment.BLL.Services.Classes;
@@ -21,7 +24,7 @@ namespace GEAM_CORE.PL
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             builder.Services.AddDbContext<GymDbContext>(Options => { Options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); });
             builder.Services.AddScoped<IMemberService, MemberService>();
-            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IUnitOfWork, IUnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
             builder.Services.AddScoped<ISessionServices, SessionService>();   // <-- السطر الجديد
             builder.Services.AddAutoMapper(X=>X.AddProfile(new MappingProfile()));

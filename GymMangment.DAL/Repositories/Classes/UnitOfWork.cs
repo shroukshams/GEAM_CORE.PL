@@ -1,31 +1,51 @@
-﻿using GymMangment.DAL.Context;
+﻿
+using GymManagement.DAL.Repositories.Interfaces;
+using GymMangment.DAL.Context;
 using GymMangment.DAL.Models;
+using GymMangment.DAL.Repositories.Classes;
 using GymMangment.DAL.Repositories.Interface;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace GymMangment.DAL.Repositories.Classes
+namespace GymManagement.DAL.Repositories.Classes
 {
     public class UnitOfWork : IUnitOfWork
     {
+        // DB Conncetion
         private readonly GymDbContext _dbContext;
         private readonly Dictionary<string, object> _repositories = [];
         public UnitOfWork(GymDbContext dbContext, ISessionRepository sessionRepository)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
             SessionRepository = sessionRepository;
         }
+
         public ISessionRepository SessionRepository { get; }
-    
-        public IGenericRepository<IEntity> GetRepository<IEntity>() where IEntity : BaseEntity, new()
+
+        public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : BaseEntity, new()
         {
-            throw new NotImplementedException();
+            // check if repo exist ??IDictionary<> of repos
+            var typeName = typeof(TEntity).Name;
+
+            // if name exist in dic
+            if (_repositories.TryGetValue(typeName, out object? value))
+                return (IGenericRepository<TEntity>)value;
+
+
+            // if not exist, create, then add to dic, then return repo
+            else
+            {
+                var repo = new GenericRepository<TEntity>(_dbContext);
+                _repositories[typeName] = repo;
+                return repo;
+            }
+
         }
 
-        public Task<int> SaveChangesAsync(CancellationToken ct = default)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<int> SaveChangesAsync(CancellationToken ct = default)
+            => await _dbContext.SaveChangesAsync(ct);
     }
 }

@@ -1,23 +1,62 @@
-﻿using GymMangment.BLL.Services.Interfaces;
+﻿using GymManagement.BLL.Services.Interfaces;
+using GymManagment.BLL.ViewModels.SessionViewModel;
+using GymMangment.BLL.Services.Classes;
+using GymMangment.BLL.Services.Interfaces;
 using GymMangment.DAL.Repositories.Interface;
 using Microsoft.AspNetCore.Mvc;
-using GymMangment.BLL.Services.Classes;
+using Microsoft.AspNetCore.Mvc.Rendering;
 namespace GEAM_CORE.PL.Controllers
 {
     public class SessionController : Controller
     {
-        private readonly ISessionServices _sessionServices;
-           
-
-        public SessionController(ISessionServices sessionServices)
+        private readonly ISessionServices _sessionService;
+        public SessionController(ISessionServices sessionService)
         {
-            _sessionServices = sessionServices;
+            _sessionService = sessionService;
+
+        }
+        // GET ::base/Session/Index
+        public async Task<IActionResult> Index(CancellationToken ct)
+        {
+            var sessions = await _sessionService.GetAllSessionsAsync(ct);
+            return View(sessions);
         }
 
-        public async Task<IActionResult> Index()
+        #region Create Actions
+        [HttpGet]
+        public async Task<IActionResult> Create()
         {
-            var sessions = await _sessionServices.GetSessionsAsync();
+            await DropDownList();
+
             return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CreateSessionViewModel model, CancellationToken ct)
+        {
+            if (!ModelState.IsValid)
+            {
+                await DropDownList();
+                return View(model);
+            }
+
+            var result = await _sessionService.CreateSessionAsync(model, ct);
+            if (result.success)
+            {
+                TempData["SuccessMessage"] = "Session Created";
+                return RedirectToAction(nameof(Index));
+            }
+            TempData["ErrorMessage"] = result.error;
+
+            await DropDownList();
+            return View(model);
+        }
+        private async Task DropDownList()
+        {
+            ViewBag.Trainers = new SelectList(await _sessionService.GetTrainerForDropDown(), "Id", "Name");
+            ViewBag.Categories = new SelectList(await _sessionService.GetCategoryForDropDown(), "Id", "CategoryName");
         }
     }
 }
+        #endregion

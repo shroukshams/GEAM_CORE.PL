@@ -6,7 +6,7 @@ using GymMangment.DAL.Models;
 using GymMangment.DAL.Repositories.Interface;
 namespace GymMangment.DAL.Repositories.Classes
 {
-    internal class MemberShipRepository : IMemberShipRepository
+    public class MemberShipRepository : IMemberShipRepository
     {
         public Task<int> AddAsync(MemberShip entity, CancellationToken ct = default)
         {
@@ -14,6 +14,11 @@ namespace GymMangment.DAL.Repositories.Classes
         }
 
         public Task<bool> AnyAsync(Expression<Func<MemberShip, bool>> predicate, CancellationToken ct = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AnyAsync(Session session)
         {
             throw new NotImplementedException();
         }
