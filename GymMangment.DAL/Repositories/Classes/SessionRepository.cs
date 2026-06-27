@@ -1,17 +1,15 @@
-﻿
-using GymManagement.DAL.Repositories.Interfaces;
+﻿using GymManagement.DAL.Repositories.Interfaces;
 using GymMangment.DAL.Context;
 using GymMangment.DAL.Models;
-using GymMangment.DAL.Repositories.Classes;
+using GymMangment.DAL.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Principal;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace GymManagement.DAL.Repositories.Classes
+namespace GymMangment.DAL.Repositories.Classes
 {
     public class SessionRepository : GenericRepository<Session>, ISessionRepository
     {

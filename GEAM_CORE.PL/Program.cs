@@ -26,7 +26,7 @@ namespace GEAM_CORE.PL
             builder.Services.AddScoped<IMemberService, MemberService>();
             builder.Services.AddScoped<IUnitOfWork, IUnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
-            builder.Services.AddScoped<ISessionServices, SessionService>();   // <-- السطر الجديد
+            builder.Services.AddScoped<ISessionService, SessionService>();   // <-- السطر الجديد
             builder.Services.AddAutoMapper(X=>X.AddProfile(new MappingProfile()));
 
             var app = builder.Build();

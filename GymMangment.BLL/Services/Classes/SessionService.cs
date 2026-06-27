@@ -18,7 +18,7 @@ namespace GymMangment.BLL.Services.Classes
 {
 
 
-    public class SessionService : ISessionServices
+    public class SessionService : ISessionService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
@@ -50,7 +50,7 @@ namespace GymMangment.BLL.Services.Classes
             // booking slots
             foreach (var session in mappedSession)
             {
-                session.AvailableSlots = session.Capacity - await _unitOfWork.CountOfBookedSlotsAsync(session.Id, ct);
+                session.AvailableSlots = session.Capacity - await _unitOfWork.SessionRepository.CountOfBookedSlotsAsync(session.Id, ct);
 
             }
             return mappedSession;
@@ -95,5 +95,7 @@ namespace GymMangment.BLL.Services.Classes
             return _mapper.Map<IEnumerable<CategorySelectViewModel>>(result);
 
         }
+
+        
     }
 }

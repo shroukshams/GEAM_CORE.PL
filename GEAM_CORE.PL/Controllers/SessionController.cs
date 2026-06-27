@@ -9,8 +9,8 @@ namespace GEAM_CORE.PL.Controllers
 {
     public class SessionController : Controller
     {
-        private readonly ISessionServices _sessionService;
-        public SessionController(ISessionServices sessionService)
+        private readonly ISessionService _sessionService;
+        public SessionController(ISessionService sessionService)
         {
             _sessionService = sessionService;
 
