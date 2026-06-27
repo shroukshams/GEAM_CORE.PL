@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace GymMangment.BLL.Classes
+namespace GymMangment.BLL.Services.Classes
 {
     public class MemberService : IMemberService
     {

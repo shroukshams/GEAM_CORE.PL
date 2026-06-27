@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\..\..\..\GymProject VMC.net\Videos\Session 06\Files\ViewModels\SessionViewModel\CreateSessionViewModel.cs" Link="ViewModels\SessionViewModel\CreateSessionViewModel.cs" />
+    <Compile Include="..\..\..\..\..\GymProject VMC.net\Videos\Session 06\Files\ViewModels\SessionViewModel\SessionViewModel.cs" Link="ViewModels\SessionViewModel\SessionViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +21,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GymMangment.DAL\GymMangment.DAL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ViewModels\SessionViewModel\" />
   </ItemGroup>
 
 </Project>

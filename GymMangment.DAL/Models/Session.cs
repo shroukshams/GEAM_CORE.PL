@@ -13,9 +13,9 @@ namespace GymMangment.DAL.Models
 
 
         #region Relationships
-        public Trainer trainer { get; set; } = default!;
+        public Trainer Trainer { get; set; } = default!;
         public int TrainerId { get; set; }
-        public Category category { get; set; } = default!;
+        public Category Category { get; set; } = default!;
         public int CategoryId { get; set; }
         public ICollection<Booking> SessionMember { get; set; } = default!;
         #endregion

@@ -8,6 +8,7 @@ namespace GymMangment.DAL.Models
     public class Trainer : BaseEntity
     {
         //hireDate == createdAt
+        public string Name { get; set; }
         public specialty? specialty { get; set; }
         #region Relationships
         public ICollection<Session> sessions { get; set; } = default!;
