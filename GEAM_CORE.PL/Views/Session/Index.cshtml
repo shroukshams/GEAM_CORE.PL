@@ -1,4 +1,5 @@
-﻿@model IEnumerable< SessionViewModel>
+﻿@using GymManagment.BLL.ViewModels.SessionViewModel
+@model IEnumerable< SessionViewModel>
 @{
     ViewData["Title"] = "Sessions";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -102,7 +103,6 @@ else if (TempData["ErrorMessage"] != null)
         </div>
     }
 </div>
-
 @section Scripts {
-    <partial name="_AlertBoxScript.cshtml" />
+    <partial name="_AlertScripts.cshtml" />
 }

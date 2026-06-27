@@ -1,4 +1,5 @@
-﻿using GymMangment.BLL.Services.Interfaces;
+﻿using AutoMapper;
+using GymMangment.BLL.Services.Interfaces;
 using GymMangment.BLL.ViewModels;
 using GymMangment.BLL.ViewModels.MemberViewModels;
 using GymMangment.DAL.Models;
@@ -13,9 +14,14 @@ namespace GymMangment.BLL.Services.Classes
     public class MemberService : IMemberService
     {
         private readonly IGenericRepository<Member> _memberRepo;
-        public MemberService(IGenericRepository<Member> memberRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        
+
+        public MemberService(IGenericRepository<Member> memberRepo,IMapper mapper)
         {
             _memberRepo = memberRepo;
+            _mapper = mapper;
         }
 
         public async Task<bool> CreateMemberAsync(CreateMemberViewModel member, CancellationToken ct = default)

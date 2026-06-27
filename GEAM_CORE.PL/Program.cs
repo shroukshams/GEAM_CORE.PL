@@ -1,9 +1,12 @@
+using GymMangment.BLL.Profiles;
+using GymMangment.BLL.Profiles;
 using GymMangment.BLL.Services.Classes;
 using GymMangment.BLL.Services.Interfaces;
 using GymMangment.DAL.Context;
 using GymMangment.DAL.Repositories.Classes;
 using GymMangment.DAL.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
+
 namespace GEAM_CORE.PL
 {
     public class Program
@@ -20,8 +23,8 @@ namespace GEAM_CORE.PL
             builder.Services.AddScoped<IMemberService, MemberService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
-            builder.Services.AddScoped<ISessionServices, SessionServices>();   // <-- السطر الجديد
-
+            builder.Services.AddScoped<ISessionServices, SessionService>();   // <-- السطر الجديد
+            builder.Services.AddAutoMapper(X=>X.AddProfile(new MappingProfile()));
 
             var app = builder.Build();
 
