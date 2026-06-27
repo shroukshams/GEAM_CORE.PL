@@ -18,4 +18,8 @@
     <ProjectReference Include="..\GymMangment.BLL\GymMangment.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\file\" />
+  </ItemGroup>
+
 </Project>
